@@ -29,6 +29,12 @@ var config = {
 		extensions: ['', '.ts', '.tsx', '.js']
 	},
 	module: {
+		preLoaders: [
+			{
+				test:  /\.(tsx|ts)/,
+				loader: "tslint"
+			}
+		],
 		loaders: [
 			{
 				test: /\.js$/,
@@ -62,7 +68,7 @@ var config = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-		    title: "React TypeScript demo"
+			title: "React TypeScript demo"
 		}),
 		new ExtractTextPlugin("[name].css?[hash]"),
 		new ProvidePlugin({
@@ -72,6 +78,11 @@ var config = {
 		})
 	]
 };
+
+// FIXME Temporary hack to disable linting by default
+if (!isLintingEnabled()) {
+	config.module.preLoaders = [];
+}
 
 module.exports = config;
 
@@ -84,4 +95,8 @@ function envDep(dev, prod) {
 
 function isDev() {
 	return !!argv.d;
+}
+
+function isLintingEnabled() {
+	return !!argv["enable-linting"];
 }

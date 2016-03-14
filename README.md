@@ -13,3 +13,6 @@ Start the webpack-dev-server:
 Build the project:
 
 `npm run build`
+
+Enable linting:
+`npm run build -- --enable-linting`

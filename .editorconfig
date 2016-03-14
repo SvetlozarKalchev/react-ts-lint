@@ -1,0 +1,17 @@
+root = true
+
+[*.{js,ts,tsx}]
+charset = utf-8
+indent_style = tab
+
+[*.{json}]
+charset = utf-8
+indent_style = tab
+
+[*.{less,css}]
+charset = utf-8
+indent_style = tab
+
+[.babelrc]
+indent_style = space
+indent_size = 2
